@@ -1,0 +1,302 @@
+<!-- Alex Larsen -->
+<!-- TCSS 460 A -->
+<!-- Assignment 3 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3</title>
+    <!-- add a reference to the external stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        #cb_activity_range {
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HTML code for displaying the navigation bar on the top -->
+    <!-- <nav class="navbar navbar-dark bg-primary mb-3"> -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
+        <div class="container">
+            <a href="#" class="navbar-brand">Health calculator</a>
+        </div>
+    </nav>
+
+    <!-- HTML code for displaying the search container -->
+    <div class="container mainContainer">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <!-- BMI tab -->
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                    aria-selected="true">BMI</a>
+            </li>
+
+            <!-- Body fat tab -->
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="bodyfat-tab" data-toggle="tab" href="#bodyfat" role="tab" aria-controls="bodyfat"
+                    aria-selected="true">Body fat</a>
+            </li>
+
+            <!-- Ideal weight tab -->
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="idealweight-tab" data-toggle="tab" href="#idealweight" role="tab" aria-controls="idealweight"
+                    aria-selected="true">Ideal weight</a>
+            </li>
+
+            <!-- Calories burned tab -->
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="caloriesbunred-tab" data-toggle="tab" href="#caloriesburned" role="tab" aria-controls="caloriesburned"
+                    aria-selected="true">Calories burned</a>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <!-- BMI tab -->
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <br>
+                <p>BMI calculator</p>
+                <br>
+                <p>Height</p>
+                <input type="text" class="form-control" id="bmi_height_ft_input" placeholder="enter height in feet">
+                <br>
+                <input type="text" class="form-control" id="bmi_height_in_input" placeholder="enter height in inches">
+                <br>
+                <p>Weight (in pounds)</p>
+                <input type="text" class="form-control" id="bmi_weight_input" placeholder="enter weight in pounds">
+                <br>
+                <button type="submit" class="btn btn-primary" id="calcBMI">Calculate BMI</button>
+                <br>
+                <p id="bmi_output">BMI: N/A</p>
+            </div>
+
+            <!-- Body fat tab -->
+            <div class="tab-pane fade show" id="bodyfat" role="tabpanel" aria-labelledby="bodyfat-tab">
+                <br>
+                <p>Body fat calculator</p>
+                <br>
+                <p>Height</p>
+                <input type="text" class="form-control" id="bf_height_ft_input" placeholder="enter height in feet">
+                <br>
+                <input type="text" class="form-control" id="bf_height_in_input" placeholder="enter height in inches">
+                <br>
+                <p>Weight (in pounds)</p>
+                <input type="text" class="form-control" id="bf_weight_input" placeholder="enter weight in pounds">
+                <br>
+                <p>Age</p>
+                <input type="text" class="form-control" id="bf_age_input" placeholder="enter age">
+                <br>
+                <p>Sex</p>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons" role="group" aria-label="Basic radio toggle button group">
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="bf_sex_radio" value="male" id="bf_sex_radio_male" autocomplete="off"> male
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="bf_sex_radio" value="female" id="bf_sex_radio_female" autocomplete="off"> female
+                    </label>
+                </div>
+                <br>
+                <br>
+                <button type="submit" class="btn btn-primary" id="calcBodyFat">Calculate body fat percentage</button>
+                <br>
+                <p id="bf_output">Body fat: N/A</p>
+            </div>
+
+            <!-- Ideal weight tab -->
+            <div class="tab-pane fade show" id="idealweight" role="tabpanel" aria-labelledby="idealweight-tab">
+                <br>
+                <p>Ideal weight calculator</p>
+                <br>
+                <p>Sex</p>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons" role="group" aria-label="Basic radio toggle button group">
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="iw_sex_radio" value="male" id="iw_sex_radio_male" autocomplete="off"> male
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="iw_sex_radio" value="female" id="iw_sex_radio_female" autocomplete="off"> female
+                    </label>
+                </div>
+                <br>
+                <p>Height</p>
+                <input type="text" class="form-control" id="iw_height_ft_input" placeholder="enter height in feet">
+                <br>
+                <input type="text" class="form-control" id="iw_height_in_input" placeholder="enter height in inches">
+                <br>
+                <button type="submit" class="btn btn-primary" id="calcIdealWeight">Calculate your ideal weight</button>
+                <br>
+                <p id="idealWeight_output">Ideal weight: N/A</p>
+            </div>
+
+            <!-- Calories burned tab -->
+            <div class="tab-pane fade show" id="caloriesburned" role="tabpanel" aria-labelledby="caloriesburned-tab">
+                <br>
+                <p>Calories burned calculator</p>
+                <br>
+                <p>Sex</p>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons" role="group" aria-label="Basic radio toggle button group">
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="cb_sex_radio" value="male" id="cb_sex_radio_male" autocomplete="off"> male
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="cb_sex_radio" value="female" id="cb_sex_radio_female" autocomplete="off"> female
+                    </label>
+                </div>
+                <br>
+                <p>Age</p>
+                <input type="text" class="form-control" id="cb_age_input" placeholder="enter age">
+                <br>
+                <p>Height</p>
+                <input type="text" class="form-control" id="cb_height_ft_input" placeholder="enter height in feet">
+                <br>
+                <input type="text" class="form-control" id="cb_height_in_input" placeholder="enter height in inches">
+                <br>
+                <p>Weight (in pounds)</p>
+                <input type="text" class="form-control" id="cb_weight_input" placeholder="enter weight in pounds">
+                <br>
+                <label for="cb_activity_range" class="form-label">Physical activity level</label><br>
+                <label for="cb_activity_range" class="pull-left">Minimal-to-no activity </label><input type="range" class="form-range" min="1.2" max="1.9" step="0.01" id="cb_activity_range"><label for="cb_activity_range" class="pull-right"> Intense activity</label>
+                <br>
+                <button type="submit" class="btn btn-primary" id="calcCaloriesBurned">Calculate calories burned</button>
+                <br>
+                
+                <p id="cb_output">Calories burned: N/A</p>
+            </div>
+        </div>
+
+
+    <!-- Modal -->
+    <div class="modal   bd-example-modal-sm" id="infoDialog" tabindex="-1" role="dialog" aria-labelledby="infoDialog"
+        aria-hidden="true">
+        <div class="modal-dialog  modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title"></div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-justify">
+                    <!-- enter details here -->
+
+                    <div class="card">
+                        <ul class="list-group">
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <p id="footer-info"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $("#calcBMI").click(async function getResults() {
+            const height_ft = Number($("#bmi_height_ft_input").val().trim());
+            const height_in = Number($("#bmi_height_in_input").val().trim());
+            const height = (height_ft * 12) + height_in;
+            const weight = $("#bmi_weight_input").val().trim();
+
+            const url = `http://localhost:3000/bmi?weight=${weight}&height=${height}`;
+            const response = await fetch (url, {
+                method: 'GET',
+                cache: 'no-cache',
+            })
+
+            //const responseData = await response.json();
+            const resp = await response.json();
+
+            $("#bmi_output").html(`<p>BMI: ${resp.bmi}</p>`);
+        });
+
+        $("#calcBodyFat").click(async function getResults() {
+            const height_ft = Number($("#bf_height_ft_input").val().trim());
+            const height_in = Number($("#bf_height_in_input").val().trim());
+            const height = (height_ft * 12) + height_in;
+            const weight = $("#bf_weight_input").val().trim();
+            const age = Number($("#bf_age_input").val().trim());
+            const sex = $('input[name="bf_sex_radio"]:checked').val();
+
+            /* Calculate BMI */
+            var url = `http://localhost:3000/bmi?weight=${weight}&height=${height}`;
+            var response = await fetch (url, {
+                method: 'GET',
+                cache: 'no-cache',
+            })
+            var resp = await response.json();
+            const bmi = resp.bmi;
+            console.log(`got bmi response of ${bmi}`);
+
+            /* Calculate body fat */
+            url = `http://localhost:3000/bodyfat?bmi=${bmi}&age=${age}&sex=${sex}`;
+            response = await fetch (url, {
+                method: 'GET',
+                cache: 'no-cache',
+            })
+            resp = await response.json();
+            
+            $("#bf_output").html(`<p>Body fat: ${resp.bodyfat}</p>`);
+        });
+
+        $("#calcIdealWeight").click(async function getResults() {
+            const sex = $('input[name=iw_sex_radio"]:checked').val();
+            const height_ft = Number($("#iw_height_ft_input").val().trim());
+            const height_in = Number($("#iw_height_in_input").val().trim());
+
+            const height = (height_ft * 12) + height_in;
+
+            const url = `http://localhost:3000/idealweight?sex=${sex}&height=${height}`;
+            const response = await fetch (url, {
+                method: 'GET',
+                cache: 'no-cache',
+            })
+
+            const resp = await response.json();
+
+            $("#idealWeight_output").html(`<p>Ideal weight: ${resp.idealWeight}</p>`);
+        });
+
+        $("#calcCaloriesBurned").click(async function getResults() {
+            const sex = $('input[name="cb_sex_radio"]:checked').val();
+            const height_ft = Number($("#cb_height_ft_input").val().trim());
+            const height_in = Number($("#cb_height_in_input").val().trim());
+            const weight = Number($("#cb_weight_input").val().trim());
+            const age = Number($("#cb_age_input").val().trim());
+            const activity = $("#cb_activity_range").val();
+
+            const height = (height_ft * 12) + height_in;
+
+            const url = `http://localhost:3000/caloriesburned?weight=${weight}&height=${height}&age=${age}&sex=${sex}&activity=${activity}`;
+            const response = await fetch (url, {
+                method: 'GET',
+                cache: 'no-cache',
+            })
+
+            //const responseData = await response.json();
+            const resp = await response.json();
+
+            $("#cb_output").html(`<p>Calories burned: ${resp.caloriesBurned}</p>`);
+        });
+    </script>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>

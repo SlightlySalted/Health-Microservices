@@ -198,13 +198,15 @@
     </div>
 
     <script>
+        const backendAddress = "localhost:3000";
+
         $("#calcBMI").click(async function getResults() {
             const height_ft = Number($("#bmi_height_ft_input").val().trim());
             const height_in = Number($("#bmi_height_in_input").val().trim());
             const height = (height_ft * 12) + height_in;
             const weight = $("#bmi_weight_input").val().trim();
 
-            const url = `http://localhost:3000/bmi?weight=${weight}&height=${height}`;
+            const url = `http://${backendAddress}/bmi?weight=${weight}&height=${height}`;
             const response = await fetch (url, {
                 method: 'GET',
                 cache: 'no-cache',
@@ -225,7 +227,7 @@
             const sex = $('input[name="bf_sex_radio"]:checked').val();
 
             /* Calculate BMI */
-            var url = `http://localhost:3000/bmi?weight=${weight}&height=${height}`;
+            var url = `http://${backendAddress}/bmi?weight=${weight}&height=${height}`;
             var response = await fetch (url, {
                 method: 'GET',
                 cache: 'no-cache',
@@ -235,7 +237,7 @@
             console.log(`got bmi response of ${bmi}`);
 
             /* Calculate body fat */
-            url = `http://localhost:3000/bodyfat?bmi=${bmi}&age=${age}&sex=${sex}`;
+            url = `http://${backendAddress}/bodyfat?bmi=${bmi}&age=${age}&sex=${sex}`;
             response = await fetch (url, {
                 method: 'GET',
                 cache: 'no-cache',
@@ -246,13 +248,13 @@
         });
 
         $("#calcIdealWeight").click(async function getResults() {
-            const sex = $('input[name=iw_sex_radio"]:checked').val();
+            const sex = $('input[name="iw_sex_radio"]:checked').val();
             const height_ft = Number($("#iw_height_ft_input").val().trim());
             const height_in = Number($("#iw_height_in_input").val().trim());
 
             const height = (height_ft * 12) + height_in;
 
-            const url = `http://localhost:3000/idealweight?sex=${sex}&height=${height}`;
+            const url = `http://${backendAddress}/idealweight?sex=${sex}&height=${height}`;
             const response = await fetch (url, {
                 method: 'GET',
                 cache: 'no-cache',

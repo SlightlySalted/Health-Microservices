@@ -4,12 +4,8 @@
 
 const express = require('express');
 const app = express();
-
-/* May be required to run correctly. Commented out to comply with the assignment requirements. */
-/*const cors = require('cors');
-app.use(cors({
-    origin: '*'
-}));*/
+const cors = require('cors');
+app.use(cors());
 
 app.get('/', (req, res) => {
     console.log(req.body);
@@ -38,7 +34,7 @@ app.get('/bodyfat', (req, res) => {
     const bmi = req.query['bmi'];
     const age = req.query['age'];
     const sex = req.query['sex'];
-    
+
     var bodyfat = NaN;
 
     if (sex == 'male') {

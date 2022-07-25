@@ -23,9 +23,9 @@ app.get('/', (req, res) => {
 app.get('/bmi', (req, res) => {
     const weight = req.query['weight'];
     const height = req.query['height'];
-    console.log(weight);
-    console.log(height);
+    
     const bmi = (weight * 703) / (height * height);
+
     res.send({bmi});
 });
 
@@ -38,13 +38,16 @@ app.get('/bodyfat', (req, res) => {
     const bmi = req.query['bmi'];
     const age = req.query['age'];
     const sex = req.query['sex'];
+    
     var bodyfat = NaN;
+
     if (sex == 'male') {
         bodyfat = (1.2 * bmi) + (0.23 * age) - 16.2;
     }
     else if (sex == 'female') {
         bodyfat = (1.2 * bmi) + (0.23 * age) - 5.4;
     }
+
     res.send({bodyfat});
 });
 
